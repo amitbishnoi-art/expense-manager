@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-paper: 247 245 240;
+  --color-surface: 255 255 255;
+  --color-surface-alt: 240 237 230;
+  --color-border: 228 224 214;
+  --color-ink: 27 31 35;
+  --color-ink-muted: 110 103 89;
+  --color-brand: 47 111 78;
+  --color-brand-soft: 224 236 229;
+  --color-income: 41 138 91;
+  --color-expense: 194 84 44;
+  --color-warn: 184 138 26;
+  --color-danger: 179 38 30;
+}
+
+.dark {
+  --color-paper: 18 22 24;
+  --color-surface: 27 33 36;
+  --color-surface-alt: 33 40 44;
+  --color-border: 46 55 60;
+  --color-ink: 232 230 225;
+  --color-ink-muted: 152 160 157;
+  --color-brand: 87 176 133;
+  --color-brand-soft: 32 51 43;
+  --color-income: 90 191 141;
+  --color-expense: 224 122 78;
+  --color-warn: 224 180 76;
+  --color-danger: 229 83 75;
+}
+
+* {
+  border-color: rgb(var(--color-border));
+}
+
+html {
+  color-scheme: light;
+}
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-paper text-ink font-sans antialiased;
+  font-feature-settings: 'tnum' 1;
+}
+
+.font-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+::selection {
+  background-color: rgb(var(--color-brand) / 0.25);
+}
+
+/* Focus ring: keyboard users get a clear outline, mouse users don't */
+:focus-visible {
+  outline: 2px solid rgb(var(--color-brand));
+  outline-offset: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(var(--color-border));
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
